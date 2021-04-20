@@ -1,0 +1,19 @@
+#my-canvas {
+  background-image: url(images/background.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+#player1 {
+  padding: 65px 50px 5px;
+  
+}
+
+#player2 {
+  padding: 65px 40px 5px 428px;
+}
+
+button{
+  class="focus:ring-2 focus:ring-green-500 ...;
+}

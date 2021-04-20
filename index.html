@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fight</title>
+    <link rel="stylesheet" href="canvas.css" />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <canvas
+      class="container mx-auto px-4"
+      id="my-canvas"
+      style="border: 2px solid rgb(128, 110, 110)"
+      width="1267"
+      height="520"
+    ></canvas>
+
+    <!-- Mouse Controller -->
+    <!-- player1 -->
+    <span id="player1">
+      <button
+        onclick="p1Reader('kick')"
+        class="focus:ring-2 focus:ring-green-500 ...;"
+      >
+        <img src="images/icons/kick.png" alt="p1 kick" />
+      </button>
+
+      <button
+        onclick="p1Reader('punch')"
+        class="focus:ring-2 focus:ring-green-500 ...;"
+      >
+        <img src="images/icons/punch.png" alt="p1 Punch" width="64px" />
+      </button>
+
+      <button
+        onclick="p1Reader('backward')"
+        class="focus:ring-2 focus:ring-green-500 ...;"
+      >
+        <img
+          src="images/icons/right-arrow.png"
+          alt="p1 backward"
+          style="transform: rotate(180deg)"
+        />
+      </button>
+
+      <button
+        onclick="p1Reader('forward')"
+        class="focus:ring-2 focus:ring-green-500 ...;"
+      >
+        <img src="images/icons/right-arrow.png" alt="p1 forward" />
+      </button>
+
+      <button
+        onclick="p1Reader('block')"
+        class="focus:ring-2 focus:ring-green-500 ...;"
+      >
+        <img src="images/icons/shield.png" alt="p1 shield" />
+      </button>
+    </span>
+
+    <!-- player 2 -->
+    <span id="player2">
+      <button
+        onclick="p2Reader('kick')"
+        class="focus:ring-2 focus:ring-red-500 ...;"
+      >
+        <img src="images/icons/kick.png" alt="p2 kick" />
+      </button>
+
+      <button
+        onclick="p2Reader('punch')"
+        class="focus:ring-2 focus:ring-red-500 ...;"
+      >
+        <img src="images/icons/punch.png" alt="p2 Punch" width="64px" />
+      </button>
+
+      <button
+        onclick="p2Reader('backward')"
+        class="focus:ring-2 focus:ring-red-500 ...;"
+      >
+        <img
+          src="images/icons/right-arrow.png"
+          alt="p2 backward"
+          style="transform: rotate(180deg)"
+        />
+      </button>
+
+      <button
+        onclick="p2Reader('forward')"
+        class="focus:ring-2 focus:ring-red-500 ...;"
+      >
+        <img src="images/icons/right-arrow.png" alt="p2 forward" />
+      </button>
+
+      <button
+        onclick="p2Reader('block')"
+        class="focus:ring-2 focus:ring-red-500 ...;"
+      >
+        <img src="images/icons/shield.png" alt="p2 shield" />
+      </button>
+    </span>
+    <script type="text/javascript" src="animation.js"></script>
+
+    <pre>
+       (z)     (x)     (a)     (d)     (b)                                                          (n)     (m)     (<-)    (->)    (l) </pre
+    >
+  </body>
+</html>
