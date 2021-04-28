@@ -177,11 +177,11 @@ class Player {
       !isBlocked &&
       (selectAnimation == "punch" || selectAnimation == "kick")
     ) {
-      let h = getDamage(this == p1, selectAnimation); //Find the damage is happened? and reduce the opponent health
+      let x = getDamage(this == p1, selectAnimation); //Find the damage is happened? and reduce the opponent health
 
       //If one who first lose total health, then end this game
-      if (h != 0) {
-        this.opponentHealth -= h;
+      if (x != 0) {
+        this.opponentHealth -= x;
         healthAnim(this == p1, (100 - this.opponentHealth) / 10);
         if (this.opponentHealth <= 0) {
           finish(this == p1);
@@ -196,23 +196,16 @@ class Player {
   //both player animation are darw by a same time
   animate = (ctx, images, animation, callback) => {
     //Below code,use for Find who have more animation images.
-
-    let maxlen =
-      images[animation[0]].length < images[animation[1]].length
-        ? images[animation[1]].length
-        : images[animation[0]].length;
-
-    //Each animations start from here
-    //Find more animation images and run this loop that images length.
-    for (let index = 0; index < maxlen; index++) {
+    let p1AnimLen = images[animation[0]].length;
+    let p2AnimLen = images[animation[1]].length;
+    images[animation[p1AnimLen < p2AnimLen ? 1 : 0]].forEach((image, index) => {
       setTimeout(() => {
         ctx.clearRect(0, 50, 2000, this.height); //clear the canvas with the help of the players size
 
         //If any one animation is over before other player animtion .
         //then, stop those player draw image.
-
         //for player1
-        if (images[animation[0]].length > index) {
+        if (p1AnimLen > index)
           ctx.drawImage(
             images[animation[0]][index],
             this.x,
@@ -220,10 +213,10 @@ class Player {
             this.width,
             this.height
           );
-        }
 
         //for player2
-        if (images[animation[1]].length > index) {
+
+        if (p2AnimLen > index) {
           ctx.scale(-1, 1);
           ctx.drawImage(
             images[animation[1]][index],
@@ -234,10 +227,13 @@ class Player {
           );
           ctx.restore();
         }
-      }, index * 60);
-    }
+      }, index * 100);
+    });
 
-    setTimeout(callback, maxlen * 60);
+    setTimeout(
+      callback,
+      images[animation[p1AnimLen < p2AnimLen ? 1 : 0]].length * 70
+    );
   };
 }
 
@@ -253,7 +249,11 @@ let detection = () => {
 //health rador
 let getDamage = (obj, attackingMethod) => {
   let isAttacked = false;
-  isAttacked = attackFrom(p1, p2);
+  if (obj) {
+    isAttacked = attackFrom(p1, p2);
+  } else {
+    isAttacked = attackFrom(p1, p2);
+  }
 
   if (isAttacked) {
     if (attackingMethod == "kick") {
